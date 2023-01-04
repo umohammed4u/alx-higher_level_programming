@@ -1,4 +1,4 @@
-!/usr/bin/python3
+#!/usr/bin/python3
 # Author - Umar Mohammed
 def magic_calculation(a, b, c):
     """Match bytecode provided by Holberton School."""
