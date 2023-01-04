@@ -1,34 +1,69 @@
-#ifndef LISTS_H
-
-#define LISTS_H
-
+#include <stdio.h>
 #include <stdlib.h>
-
-
+#include "lists.h"
 
 /**
- * struct listint_s - singly linked list
- * @n: integer
- * @next: points to the next node
- * Description: singly linked list node structure
- * for Holberton project
+ * print_listint - prints all elements of a listint_t list
+ * @h: pointer to head of list
+ * Return: number of nodes
  */
 
-typedef struct listint_s
+size_t print_listint(const listint_t *h)
 
 {
-	int n;
+	const listint_t *current;
 
-	struct listint_s *next;
+	unsigned int n;
 
-} listint_t;
+	current = h;
+	n = 0;
+	while (current != NULL)
+	{
+		printf("%i\n", current->n);
+		current = current->next;
+		n++;
+	}
 
-size_t print_listint(const listint_t *h);
+	return (n);
+}
 
-listint_t *add_nodeint(listint_t **head, const int n);
+/**
+ * add_nodeint - adds a new node at the beginning of a listint_t list
+ * @head: pointer to a pointer of the start of the list
+ * @n: integer to be included in node
+ * Return: address of the new element or NULL if it fails
+ */
 
-void free_listint(listint_t *head);
+listint_t *add_nodeint(listint_t **head, const int n)
 
-int check_cycle(listint_t *list);
+{
+	listint_t *new;
+	new = malloc(sizeof(listint_t));
+	if (new == NULL)
+	{
+		return (NULL);
+	}
 
-#endif /* LISTS_H */
+	new->n = n;
+	new->next = *head;
+	*head = new;
+	return (new);
+}
+
+/**
+ * free_listint - frees a listint_t list
+ * @head: pointer to list to be freed
+ * Return: void
+ */
+
+void free_listint(listint_t *head)
+
+{
+	listint_t *current;
+	while (head != NULL)
+	{
+		current = head;
+		head = head->next;
+		free(current);
+	}
+}
