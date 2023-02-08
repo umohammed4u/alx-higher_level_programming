@@ -17,9 +17,10 @@ def print_stats(size, status_codes):
     for key in sorted(status_codes):
         print("{}: {}".format(key, status_codes[key]))
 
+
 if __name__ == "__main__":
     import sys
-    
+
     size = 0
     status_codes = {}
     valid_codes = ['200', '301', '400', '401', '403', '404', '405', '500']
@@ -32,7 +33,7 @@ if __name__ == "__main__":
                 count = 1
             else:
                 count += 1
-    
+
             line = line.split()
 
             try:
@@ -46,7 +47,6 @@ if __name__ == "__main__":
                         status_codes[line[-2]] = 1
                     else:
                         status_codes[line[-2]] += 1
-        
             except IndexError:
                 pass
 
