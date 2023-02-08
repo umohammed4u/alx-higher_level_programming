@@ -20,7 +20,7 @@ def print_stats(size, status_codes):
 
 if __name__ == "__main__":
     import sys
-
+    
     size = 0
     status_codes = {}
     valid_codes = ['200', '301', '400', '401', '403', '404', '405', '500']
@@ -34,7 +34,7 @@ if __name__ == "__main__":
             else:
                 count += 1
     
-    line = line.split()
+            line = line.split()
 
             try:
                 size += int(line[-1])
@@ -47,6 +47,7 @@ if __name__ == "__main__":
                         status_codes[line[-2]] = 1
                     else:
                         status_codes[line[-2]] += 1
+            
             except IndexError:
                 pass
 
