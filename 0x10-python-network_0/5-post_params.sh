@@ -1,3 +1,3 @@
 #!/bin/bash
-# Get the byte size of the HTTP response header for a given URL.
-curl -s "$1" | wc -c
+# This script takes in a URL, sends a POST request to the passed URL, and displays the body of the response
+curl -s -d "email=test@gmail.com&subject=I will always be here for PLD" -X POST "$1"
